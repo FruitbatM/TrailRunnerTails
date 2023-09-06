@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid bg-ss">
+    <div class="row" id="login-block">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form action="{{ url_for('register') }}" method="POST" class="row g-3">
+                    <h4>Create a new admin account</h4>
+                    <div class="col-12">
+                        <label for="username">username</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="text">password</label>
+                        <input type="text" name="password" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn section-button float-end">Create account</button>
+                    </div>
+                </form>
+                <hr class="mt-4">
+                {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                <label>User: {{ message['username']}} created</label>
+                {% endfor %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

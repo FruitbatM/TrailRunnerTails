@@ -1,4 +1,6 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import (
+    Flask, render_template, redirect, session,
+    request, url_for, flash)
 
 # create instance of flask and assign it to "app"
 app = Flask(__name__)
@@ -20,7 +22,7 @@ def user(name):
 
 @app.route("/journal")
 def journal():
-    return render_template("journal.html")
+    return render_template("journal/journal.html")
 
 
 @app.route("/news")
@@ -33,14 +35,18 @@ def about():
     return render_template("about.html")
 
 
+# User login
 @app.route("/login_page")
 def login_page():
-    return render_template("login.html")
+    return render_template("login.html", user=session["user"])
 
 
 @app.route("/logout")
 def logout():
-    return redirect(url_for("index"))
+    # remove user from session cookies
+    flash("You have been successfully logged out")
+    session.pop("user", None) or session.pop("email", None)
+    return redirect(url_for("login"))
 
 
 @app.route("/admin")

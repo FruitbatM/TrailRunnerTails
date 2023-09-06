@@ -26,13 +26,13 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <a class="navbar-brand d-md-flex bigify grow" href="{{ url_for('index') }}">
-                            <img src="{{ url_for('static', filename='images/logo_s.jpeg') }}" alt="logo"
+                            <img src="{{ url_for('static', filename='images/logo_nobackground.jpeg') }}" alt="logo"
                                 class="d-inline-block align-text-top" id="brand-logo" loading="lazy">
                         </a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item text-uppercase pe-5">
-                                    <a class="nav-link" href="{{ url_for('journal') }}">Share a Story</a>
+                                    <a class="nav-link" href="{{ url_for('journal') }}">Journal</a>
                                 </li>
                                 <li class="nav-item text-uppercase pe-5">
                                     <a class="nav-link" href="{{ url_for('news') }}">News</a>
@@ -45,7 +45,6 @@
                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-user fa-lg icon"></i>
                                     </a>
-                                    <!--
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                         {% if user!="guest" %}
                                             <li>
@@ -96,7 +95,6 @@
                                     </li>
                                 {% endif %}
                             </ul>
-                        -->
                         </div>
                     </nav>
                 </div>
