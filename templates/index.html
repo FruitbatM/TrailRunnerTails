@@ -1,1 +1,126 @@
-<h1>Hello Trail Runner Tails!</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero section -->
+<div id="home-header">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12 my-auto">
+                <h1 class="main-heading text-uppercase">
+                    We're here to inspire, <br>
+                    educate and empower.
+                </h1>
+                <h3 class="sub-heading">
+                    Trail Running Journal
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- section -->
+<section>
+    <div class="container text-center" id="landing-about">
+        <div class="row" data-aos="zoom-in-down">
+            <h2 class="section-heading-1 pb-2">
+                SECTION
+            </h2>
+            <hr class="heading-hr mx-auto">
+            <div class="row pt-3">
+                <div class="text-center col-lg-12 mt-3 trail-p">
+                    <p class="font-italic section-para">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae impedit deleniti ut numquam officiis vero inventore, itaque dolore saepe temporibus sed dignissimos vitae sit natus facere quod autem soluta quidem.
+                    </p>
+                    <p class="font-italic section-para">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo sint ratione libero distinctio facilis, autem porro necessitatibus explicabo nulla velit ea voluptate odit suscipit fugiat ullam? Obcaecati consequatur incidunt nihil.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid page-background"></div>
+</section>
+<!-- Story section -->
+<section class="mb-5 bg-story">
+    <div class="container" data-aos="zoom-in-down">
+        <div class="row">
+            <h2 class="section-heading-1 text-uppercase text-center">Share a Story</h2>
+        </div>
+        <hr class="heading-hr mx-auto">
+    </div>
+    <div class="container" data-aos="zoom-in-down">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 text-center">
+                <img src=""
+                    alt="" class="img-fluid"
+                    id="story-img">
+            </div>
+            <div class="col-lg-6 col-sm-12 para-center">
+                <p class="section-para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae beatae nam autem iure possimus voluptatem iste animi perspiciatis maxime quae quibusdam necessitatibus reprehenderit, quaerat rem fugiat, dolore quis sint odit.
+                </p>
+                <div class="row text-center mt-5">
+                    <div class="col-12 mb-5">
+                        <a class="btn btn-md justify-content-center section-button text-uppercase"
+                            href="{{ url_for('journal') }}" role="button" aria-label="explore journal">
+                            share your story
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- News section -->
+<section class="bg-news pb-1">
+    <div class="container" data-aos="zoom-in-down">
+        <div class="row">
+            <h2 class="section-heading-1 text-uppercase text-center">News</h2>
+        </div>
+        <hr class="heading-hr mx-auto">
+    </div>
+    <div class="container my-5" data-aos="zoom-in-down">
+        <div class="row mt-5">
+
+                <div class="col-lg-4 col-md-6 mb-5 justify-content-center d-flex">
+                    <article class="article-post mx-auto">
+                        <figure class="article">
+                            <div class="article-overlay">
+                                <a href="#">
+                                    <img class="card-img-top img-fluid" alt="article image">
+                                </a>
+                            </div>
+                        </figure>
+                        <div class="article-content">
+                            <div class="article-header">
+                                <h5 class="article-card-title">
+                                    <a href=""
+                                        class="article-link"></a>
+                                </h5>
+                                <div class="article-meta text-muted">
+                                    
+                                </div>
+                            </div>
+                            <div class="article-overview article-card-text">
+                                <p>
+                                    
+                                </p>
+                            </div>
+                            <div class="article-footer">
+                                <div class="row">
+                                    <div class="col-6 text-left footer-link">
+                                        <span>
+                                            <a href="" class="article-link">
+                                                Read more
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

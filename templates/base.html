@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/styles.css">
+        <link rel="shortcut icon" type="image/icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+        <title>Trail Runner Tails</title>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <header>
+            <div class="container">
+                <div class="row mb-2">
+                    <nav class="navbar navbar-expand-lg navbar-light py-lg-2">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand d-md-flex bigify grow" href="{{ url_for('index') }}">
+                            <img src="{{ url_for('static', filename='images/logo_s.jpeg') }}" alt="logo"
+                                class="d-inline-block align-text-top" id="brand-logo" loading="lazy">
+                        </a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item text-uppercase pe-5">
+                                    <a class="nav-link" href="{{ url_for('journal') }}">Share a Story</a>
+                                </li>
+                                <li class="nav-item text-uppercase pe-5">
+                                    <a class="nav-link" href="{{ url_for('news') }}">News</a>
+                                </li>
+                                <li class="nav-item text-uppercase pe-5">
+                                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                                </li>
+                                <li class="nav-item dropdown list-unstyled text-lg-right d-none d-lg-block ps-5">
+                                    <a class="nav-link text-black" href="" id="navbarScrollingDropdown" 
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user fa-lg icon"></i>
+                                    </a>
+                                    <!--
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        {% if user!="guest" %}
+                                            <li>
+                                                <a class="dropdown-item" href="">ADD ADMIN</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="">MANAGE ADMINS</a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="">LOGOUT</a>
+                                            </li>
+                                        {% endif %}
+                                        {% if user =="guest" %}
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url_for('login_page') }}">LOGIN</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="d-lg-none">
+                                </li>
+                                {% if user=="guest" %}
+                                    <li class="nav-item text-uppercase d-lg-none">
+                                        <a class="nav-link admin-user-mobile" href="{{ url_for('login_page') }}">
+                                            Login
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if user!="guest" %}
+                                    <li class="nav-item text-uppercase d-lg-none">
+                                        <a class="nav-link admin-user-mobile" href="{{ url_for('register_page') }}">
+                                            Create admin
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-uppercase d-lg-none">
+                                        <a class="nav-link admin-user-mobile" href="{{ url_for('admin') }}">
+                                            Manage admins
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-uppercase d-lg-none">
+                                        <a class="nav-link admin-user-mobile" href="{{ url_for('logout') }}">
+                                            logout
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- Page Content -->
+
+        {% block content %}
+        {% endblock %}
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-white">
+            <div class="container-fluid p-4 pb-0">
+                <div class="row pb-3">
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0 pe-2">
+                        <h5>Trail Runner Tails</h5>
+                        <p>
+                            <small>
+                                Our main purpose is to provide resources that will encourage people to share their 
+                                stories about the disease with the ultimate aim of building communities 
+                                of support.
+                            </small>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0 d-md-none d-lg-block">
+                        <h5 class="text-uppercase">links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="{{ url_for('journal') }}" class="text-white">JOURNAL</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('news') }}" class="text-white">NEWS</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('about') }}" class="text-white">ABOUT</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0 footer-contact">
+                        <h5 class="text-uppercase">contact</h5>
+                        <p class="footer-email">
+                            <strong>Email:</strong>
+                            <a href="mailto:b-care.info@gmail.com">
+                              hello@ trailrunnertails.com
+                            </a>
+                        </p>
+                        <p class="footer-phone">
+                            <strong>Tel:</strong>
+                            <a href="tel:+353875555222">
+                                +353 (0) 875555222
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-4" />
+            </div>
+            <div class="text-center p-3" id="copyright">
+                &copy;
+                <script>document.write(new Date().getFullYear());</script>
+                Trail Runner Tails
+            </div>
+        </footer>
+
+        <!-- Bootstrap JavaScript, Popper, jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <!-- Internal script file -->
+        <script src="../static/js/main.js"></script>
+
+        <script>
+            AOS.init({
+                offset: 300,
+                duration: 600,
+                once: true
+            });
+        </script>
+    </body>
+
+</html>
