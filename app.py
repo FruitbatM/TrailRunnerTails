@@ -158,3 +158,49 @@ def error_500(error):
     '''
     return render_template("error/500.html", error=True,
                            title="Internal Server Error"), 500
+
+
+@app.route('/linkedin')
+def linkedin():
+    """
+    Function to load Linkedin
+    """
+    return redirect("https://www.linkedin.com")
+
+
+@app.route('/facebook')
+def facebook():
+    """
+    Function to load Facebook
+    """
+    return redirect("https://www.facebook.com")
+
+
+@app.route('/github')
+def github():
+    """
+    Function to load Github
+    """
+    return redirect("https://github.com")
+
+
+@app.route('/instagram')
+def instagram():
+    """
+    Function to load Instagram
+    """
+    return redirect("https://www.instagram.com")
+
+
+@app.route('/youtube')
+def youtube():
+    """
+    Function to load Youtube
+    """
+    return redirect("https://www.youtube.com/")
+
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=False)

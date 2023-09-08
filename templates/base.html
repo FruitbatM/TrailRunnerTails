@@ -112,9 +112,7 @@
                         <h5>Trail Runner Tails</h5>
                         <p>
                             <small>
-                                Our main purpose is to provide resources that will encourage people to share their 
-                                stories about the disease with the ultimate aim of building communities 
-                                of support.
+                                Discover more trail running inspiration, tips, and stories by exploring our blog. Join our passionate community of trail runners and hikers who share your love for adventure. Connect with us on social media for the latest updates and stay tuned for exciting upcoming events. Thank you for being a part of the Trail Runner Tails journey.
                             </small>
                         </p>
                     </div>
@@ -122,10 +120,10 @@
                         <h5 class="text-uppercase">links</h5>
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="{{ url_for('journal') }}" class="text-white">JOURNAL</a>
+                                <a href="{{ url_for('index') }}" class="text-white">HOME</a>
                             </li>
                             <li>
-                                <a href="{{ url_for('news') }}" class="text-white">NEWS</a>
+                                <a href="{{ url_for('journal') }}" class="text-white">JOURNAL</a>
                             </li>
                             <li>
                                 <a href="{{ url_for('about') }}" class="text-white">ABOUT</a>
@@ -149,6 +147,26 @@
                     </div>
                 </div>
                 <hr class="mb-4" />
+                <div class="social-media mb-4 text-center">
+                    <a class="btn btn-outline-light btn-floating m-1" href="{{ url_for('facebook') }}" target="_blank" rel="noreferrer">
+                        <i class="fab fa-facebook-square fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitter.com" target="_blank" rel="noreferrer">
+                        <i class="fab fa-twitter-square fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="{{ url_for('instagram') }}" target="_blank" rel="noreferrer">
+                        <i class="fab fa-instagram-square fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="{{ url_for('youtube') }}" target="_blank" rel="noreferrer">
+                        <i class="fab fa-youtube-square fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="{{ url_for('linkedin') }}" target="_blank" rel="noreferrer">
+                        <i class="fab fa-linkedin fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="{{ url_for('github') }}" target="_blank" rel="noreferrer">
+                        <i class="fab fa-github-square fa-2x icon" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
             <div class="text-center p-3" id="copyright">
                 &copy;

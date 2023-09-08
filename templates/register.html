@@ -26,11 +26,17 @@
                     <div class="col-12">
                         <button type="submit" class="btn section-button float-end">Create account</button>
                     </div>
+                    <div class="col-12">
+                        <p class="center-align">
+                            Already registered? 
+                            <a href="{{ url_for('login') }}">Login</a>
+                        </p>
+                    </div>
                 </form>
                 <hr class="mt-4">
                 {% with messages = get_flashed_messages() %}
                 {% for message in messages %}
-                <label>User: {{ message['username']}} created</label>
+                    <label>User: {{ message['username']}} created</label>
                 {% endfor %}
                 {% endwith %}
             </div>
