@@ -1,29 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <!-- Patient login -->
-    <div class="login-image">
-        <div class="row">
-            <form class="col s12" method="POST" action="{{ url_for('login') }}">
-                <div class="card-panel left">
-                    <h3 class="center-align login-heading">Log in</h3>
-                    <!-- Username -->
-                    <div class="input-field col s12">
-                        <input  id="username" name="username" type="text" minlength="5" 
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="username">Username</label>
+<!-- Login form - code source: Bootstrap5 -->
+<div class="container-fluid bg-ss">
+    <div class="row" id="login-block">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form action="{{ url_for('login') }}" method="POST" class="row g-3">
+                    <h4>LOG IN</h4>
+                    <div class="col-12">
+                        <label>Username</label>
+                        <input type="text" id="username" name="username" class="form-control" minlength="5" maxlength="15" placeholder="Username" class="validate" required>
                     </div>
-                    <!-- Password -->
-                    <div class="input-field col s12">
-                        <input id="password" name="password" type="password" minlength="5" 
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
+                    <div class="col-12">
+                        <label>Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" class="validate" required>
                     </div>
-                    <div class="row">
-                        <button type="submit" class="col s8 offset-s2 btn-large sign-btn center-align">
-                            Log In <i class="fas fa-sign-in-alt"></i>
-                        </button>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe"> Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn section-button float-end">LOG IN</button>
                     </div>
                     <div class="col s12">
                         <p class="center-align">
@@ -31,8 +31,16 @@
                             <a href="{{ url_for('register') }}">Register account</a>
                         </p>
                     </div>
-                </div>
-            </form>
+                </form>
+                <hr class="mt-4">
+                {% with messages = get_flashed_messages() %}
+                    {% for message in messages %}
+                        <label>{{message}}</label>
+                    {% endfor %}
+                {% endwith %}
+            </div>
         </div>
     </div>
+</div>
+
 {% endblock %}
