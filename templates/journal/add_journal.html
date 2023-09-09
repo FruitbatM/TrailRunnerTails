@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ ckeditor.load() }}
+<section class="d-flex align-items-center m-3 journal-form" id="form-h">
+    <div class="container-fluid w-100">
+        <div class="row d-flex justify-content-center h-100 mb-3">
+            <div class="col-sm-7 col-lg-5 col-centered card-login shadow rounded card-background">
+                <h2 class="text-center text-uppercase pt-3">Add a Journal Post</h2>
+                <div class="row">
+                    <form action="{{ url_for('add_journal') }}" method="POST" class="row g-3">
+                        {{ form.hidden_tag() }}
+                        <div class="col-md-12">
+                            <label for="title" class="form-label">Title</label>
+                            {{ form.title(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="credit" class="form-label">Credit</label>
+                            {{ form.credit(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="published_date" class="form-label">Date</label>
+                            {{ form.published_date(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="image1" class="form-label">Image 1</label>
+                            {{ form.image1(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="paragraph_1" class="form-label">Paragraph 1</label>
+                            {{ form.paragraph_1(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="paragraph_2" class="form-label">Paragraph 2</label>
+                            {{ form.paragraph_2(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="image2" class="form-label">Image 2</label>
+                            {{ form.image2(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="paragraph_3" class="form-label">Paragraph 3</label>
+                            {{ form.paragraph_3(class="form-control") }}
+                        </div>
+                        <div class="col-md-12">
+                            <label for="paragraph_4" class="form-label">Paragraph 4</label>
+                            {{ form.paragraph_4(class="form-control") }}
+                        </div>
+                        <div class="col-12 mb-3 text-end">
+                            {{ form.submit(class="btn btn-secondary") }}
+                        </div>
+                    </form>
+                    {{ ckeditor.load() }}
+                    {{ ckeditor.config(name='paragraph_1') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

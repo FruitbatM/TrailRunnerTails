@@ -1,3 +1,44 @@
 {% extends 'base.html' %}
 
-<h1>This is a Blog!</h1>
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row ">
+            <h1 class="section-heading">Journal</h1>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row mt-5">
+            {% for journal in journals %}
+            <div class="col-lg-4 col-md-6 mb-5 justify-content-center d-flex">
+                <article class="article-post mx-auto">
+                    <figure class="article">
+                        <div class="article-overlay">
+                            <a href="#">
+                                <img src="{{ journal.image1 }}" class="card-img-top img-fluid" alt="article image">
+                            </a>
+                        </div>
+                    </figure>
+                    <div class="article-content scroll chatbox overflow-auto">
+                        <div class="article-header">
+                            <h5 class="article-card-title">
+                                <a href="#" class="article-link">{{ journal.title }}</a>
+                            </h5>
+                            <div class="article-meta text-muted pb-2">
+                                {{journal.credit }} | {{ journal.published_date }}
+                            </div>
+                        </div>
+                        <div class="article-overview article-card-text">
+                            <p>
+                                {{ journal.paragraph_1 }}
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

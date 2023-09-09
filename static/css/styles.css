@@ -127,6 +127,18 @@ a:link {
     transform: scale(1.2);
 }
 
+
+/* Blog page */
+  
+.journal-form {
+    min-height: 73vh;
+}
+
+#btn-journal {
+    background-color: #64c7d6;
+  }
+  
+
 /* Media Queries */
 /* Display on small devices */
 

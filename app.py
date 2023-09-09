@@ -4,7 +4,12 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 from datetime import datetime
+from flask_ckeditor import CKEditor
+from flask_ckeditor import CKEditorField
 import os
 
 if os.path.exists("env.py"):
@@ -12,6 +17,10 @@ if os.path.exists("env.py"):
 
 # Create instance of flask and assign it to "app"
 app = Flask(__name__)
+app.config['SECRET_KEY_CRF'] = "this is my secret crf key"
+
+# Add CKEditor
+ckeditor = CKEditor(app)
 
 # Gab the environment variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -20,8 +29,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# mongodb name is 'trail_runner_tails'
+# mongodb name is 'trailrunnertails_db'
 userData = mongo.db.users
+journalData = mongo.db.journal
 
 if os.environ.get("DEBUG") == 'True':
     app.debug = True
@@ -29,27 +39,84 @@ else:
     app.debug = False
 
 
+# Create a Form class
+class JournalForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    credit = StringField("Credit", validators=[DataRequired()])
+    published_date = StringField("Date", validators=[DataRequired()])
+    image1 = StringField("Image 1")
+    paragraph_1 = CKEditorField("Paragraph 1", validators=[DataRequired()],
+                                ckeditor_options={'autoParagraph': False})
+    paragraph_2 = CKEditorField("Paragraph 2", validators=[DataRequired()],
+                                ckeditor_options={'autoParagraph': False})
+    image2 = StringField("Image 2")
+    paragraph_3 = CKEditorField("Paragraph 3",
+                                ckeditor_options={'autoParagraph': False})
+    paragraph_4 = CKEditorField("Paragraph 4",
+                                ckeditor_options={'autoParagraph': False})
+    submit = SubmitField("Submit")
+
+
 # Create a route
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    first_name = "Marina"
-    return render_template("index.html", first_name=first_name)
-
-
-# localhost:5000/user/Marina
-@app.route("/user/add", )
-def user(name):
-    return render_template("user.html", user_name=name)
+    return render_template("index.html")
 
 
 @app.route("/journal")
 def journal():
-    return render_template("journal/journal.html")
+    """
+    Viewing Journal Posts
+    """
+    # Fetch all journal posts from the MongoDB collection
+    journals = list(journalData.find())
+
+    return render_template("journal/journal.html", journals=journals)
 
 
-@app.route("/news")
-def news():
-    return render_template("news.html")
+@app.route("/add_journal", methods=["GET", "POST"])
+def add_journal():
+    """
+    Filling in the add journal form and handling form submission.
+    """
+    form = JournalForm()
+
+    # Automatically set the date to the current date
+    form.published_date.data = datetime.now().strftime("%d-%m-%Y")
+
+    # Validate Form
+    if form.validate_on_submit():
+        title = form.title.data
+        credit = form.credit.data
+        published_date = form.published_date.data
+        image1 = form.image1.data
+        paragraph_1 = form.paragraph_1.data
+        paragraph_2 = form.paragraph_2.data
+        image2 = form.image2.data
+        paragraph_3 = form.paragraph_3.data
+        paragraph_4 = form.paragraph_4.data
+
+        # Create a new journal post document
+        new_journal = {
+            "title": title,
+            "credit": credit,
+            "published_date": published_date,
+            "image1": image1,
+            "image2": image2,
+            "paragraph_1": paragraph_1,
+            "paragraph_2": paragraph_2,
+            "paragraph_3": paragraph_3,
+            "paragraph_4": paragraph_4,
+        }
+
+        # Insert the new journal post into the MongoDB collection
+        journalData.insert_one(new_journal)
+
+        # Redirect to the journal page after adding the post
+        flash("Journal post added successfully")
+        return redirect(url_for("journal"))
+
+    return render_template("journal/add_journal.html", form=form)
 
 
 @app.route("/about")
