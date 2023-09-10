@@ -83,6 +83,88 @@ html, body {
     transform: scale(1.05);
 }
 
+/*Login page*/
+
+#login-block {
+    min-height: 90vh;
+}
+
+/* Make elements bigger on mouse hover */
+
+.grow {
+    transition: all .1s ease-in-out;
+}
+
+.bigify:hover {
+    transform: scale(1.2);
+}
+
+/* Journal page */
+.journal-form {
+    min-height: 73vh;
+}
+
+.journal-image {
+    height: 50%;
+    width: 50%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.journal-post {
+    width: 85%;
+    margin-bottom: 4rem;
+}
+
+.card-img-top {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.journal-card-title a {
+    color: #439B94;
+}
+
+.journal-link {
+    color: #439B94;
+}
+
+.journald-link:hover {
+    color: #2f7f79;
+}
+
+#btn-journal {
+    background-color: #64c7d6;
+}
+
+.modal-button {
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+}
+
+.modal-button:focus, 
+.modal-button:active, 
+.modal-button:hover {
+    outline: transparent;
+}
+
+
+/*Admin page*/
+.admin-card {
+    max-width: 18.75rem;
+    height: 10rem;
+    background-color: #7ECDDA;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 25px rgb(0 0 0 / 10%);
+    box-shadow: 0px 0px 25px rgb(0 0 0 / 10%);
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+}
 
 /* Footer */
 footer {
@@ -111,37 +193,8 @@ a:link {
     margin-right: 2rem;
 }
 
-/*Login page*/
-
-#login-block {
-    min-height: 90vh;
-}
-
-/* Make elements bigger on mouse hover */
-
-.grow {
-    transition: all .1s ease-in-out;
-}
-
-.bigify:hover {
-    transform: scale(1.2);
-}
-
-
-/* Blog page */
-  
-.journal-form {
-    min-height: 73vh;
-}
-
-#btn-journal {
-    background-color: #64c7d6;
-  }
-  
-
 /* Media Queries */
 /* Display on small devices */
-
 @media only screen and (min-width: 395px) {
     #chat-console {
         width: 90%;
@@ -161,7 +214,6 @@ a:link {
 }
 
 /* Display on tablet devices */
-
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
     #home-header {
         height: 40rem;
@@ -184,7 +236,6 @@ a:link {
 }
 
 /* Display on large devices */
-
 @media screen and (min-width: 1024px) {
     .navbar {
         font-size: 1.2rem;

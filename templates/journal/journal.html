@@ -12,18 +12,18 @@
         <div class="row mt-5">
             {% for journal in journals %}
             <div class="col-lg-4 col-md-6 mb-5 justify-content-center d-flex">
-                <article class="article-post mx-auto">
+                <article class="journal-post mx-auto">
                     <figure class="article">
                         <div class="article-overlay">
-                            <a href="#">
-                                <img src="{{ journal.image1 }}" class="card-img-top img-fluid" alt="article image">
+                            <a href="{{ url_for('journal_post', post_id=journal._id) }}">
+                                <img src="{{ journal.image1 }}" class="card-img-top img-fluid" alt="journal image">
                             </a>
                         </div>
                     </figure>
-                    <div class="article-content scroll chatbox overflow-auto">
+                    <div class="journal-content scroll overflow-auto">
                         <div class="article-header">
-                            <h5 class="article-card-title">
-                                <a href="#" class="article-link">{{ journal.title }}</a>
+                            <h5 class="journal-card-title">
+                                <a href="{{ url_for('journal_post', post_id=journal._id) }}" class="journal-link">{{ journal.title }}</a>
                             </h5>
                             <div class="article-meta text-muted pb-2">
                                 {{journal.credit }} | {{ journal.published_date }}
@@ -35,6 +35,35 @@
                             </p>
                         </div>
                     </div>
+                    {% if user_is_authorized_to_delete() %}
+                    <span>
+                        <a href="{{ url_for('edit_journal', post_id=journal._id) }}">Edit</a> |
+                        <!-- Delete Modal Button -->
+                        <button type="button" class="modal-button" data-bs-toggle="modal" data-bs-target="#deleteModal{{ journal._id }}">
+                            <span class="text-danger">Delete</span>
+                        </button>
+                    </span>
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal{{ journal._id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content text-center">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel-{{ journal._id }}">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <i class="far fa-trash-alt fa-2x icon text-danger mb-2"></i>
+                                    <h5>Are you sure you want to delete</h5>
+                                    <h5 class="text-danger">{{ journal.title }}?</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="{{ url_for('delete_journal', post_id=journal._id) }}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </article>
             </div>
             {% endfor %}
