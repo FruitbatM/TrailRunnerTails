@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<!-- section -->
+<!-- Intro section -->
 <section>
     <div class="container text-center" id="landing-about">
         <div class="row" data-aos="zoom-in-down">
@@ -54,36 +54,36 @@
     </div>
     <div class="container my-5" data-aos="zoom-in-down">
         <div class="row mt-5">
-
+            {% for journal in journals[:3] %}
                 <div class="col-lg-4 col-md-6 mb-5 justify-content-center d-flex">
-                    <article class="article-post mx-auto">
+                    <article class="journal-post mx-auto">
                         <figure class="article">
                             <div class="article-overlay">
-                                <a href="#">
-                                    <img class="card-img-top img-fluid" alt="article image">
+                                <a href="{{ url_for('journal_post', post_id=journal._id) }}">
+                                    <img src="{{ journal.image1 }}" class="card-img-top img-fluid" alt="journal image">
                                 </a>
                             </div>
                         </figure>
                         <div class="article-content">
                             <div class="article-header">
-                                <h5 class="article-card-title">
-                                    <a href=""
-                                        class="article-link"></a>
+                                <h5 class="journal-card-title">
+                                    <a href="{{ url_for('journal_post', post_id=journal._id) }}"
+                                        class="journal-link">{{ journal.title }}</a>
                                 </h5>
                                 <div class="article-meta text-muted">
-                                    
+                                    {{journal.credit }} | {{ journal.published_date }}
                                 </div>
                             </div>
                             <div class="article-overview article-card-text">
                                 <p>
-                                    
+                                    {{ journal.paragraph_1 }}
                                 </p>
                             </div>
                             <div class="article-footer">
                                 <div class="row">
                                     <div class="col-6 text-left footer-link">
                                         <span>
-                                            <a href="" class="article-link">
+                                            <a href="{{ url_for('journal_post', post_id=journal._id) }}" class="journal-link">
                                                 Read more
                                             </a>
                                         </span>
@@ -93,6 +93,7 @@
                         </div>
                     </article>
                 </div>
+            {% endfor %}
         </div>
     </div>
 </section>

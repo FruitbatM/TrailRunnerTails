@@ -56,7 +56,9 @@ class JournalForm(FlaskForm):
 # Create a route
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    # Fetch the first three journal posts from the MongoDB collection
+    journals = list(journalData.find().limit(3))
+    return render_template("index.html", journals=journals)
 
 
 @app.route("/journal")
