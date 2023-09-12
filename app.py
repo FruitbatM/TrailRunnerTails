@@ -15,8 +15,10 @@ if os.path.exists("env.py"):
     import env
 
 # Create instance of flask and assign it to "app"
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 app.config['SECRET_KEY_CRF'] = "this is my secret crf key"
+
 
 # Add CKEditor
 app.config['CKEDITOR_SERVE_LOCAL'] = True
