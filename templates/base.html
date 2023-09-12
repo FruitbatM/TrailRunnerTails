@@ -47,16 +47,16 @@
                                         <i class="fa-solid fa-person-running fa-lg"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                        {% if user!="guest" %}
+                                        <li>
+                                            <a class="dropdown-item" href="{{ url_for('login_page') }}">LOGIN</a>
+                                        </li>
+                                        {% if is_admin %}
                                             <li>
-                                                <a class="dropdown-item" href="{{ url_for('register_page') }}">REGISTER</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{ url_for('login_page') }}">LOGIN</a>
+                                                <a class="dropdown-item" href="{{ url_for('add_journal') }}">ADD JOURNAL</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
-                                            </li>
+                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ url_for('logout') }}">LOGOUT</a>
                                             </li>
@@ -86,7 +86,7 @@
                                     </li>
                                     <li class="nav-item text-uppercase d-lg-none">
                                         <a class="nav-link admin-user-mobile" href="{{ url_for('logout') }}">
-                                            logout
+                                            Logout
                                         </a>
                                     </li>
                                 {% endif %}

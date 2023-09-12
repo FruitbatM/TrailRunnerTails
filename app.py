@@ -242,7 +242,7 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("journal/journal.html")
 
 
 @app.route("/logout")
