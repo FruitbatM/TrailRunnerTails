@@ -6,7 +6,7 @@
         <div class="row ">
             <h1 class="section-heading">Journal</h1>
         </div>
-        <hr>
+        <hr class="heading-hr-2">
     </div>
     <div class="container">
         <div class="row mt-5">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="article-overview article-card-text">
                             <p>
-                                {{ journal.paragraph_1 }}
+                                {{ journal.paragraph_1 | safe }}
                             </p>
                         </div>
                     </div>

@@ -226,18 +226,16 @@ def login():
                     existing_user["password"],
                     request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                # Set the user's role in the session
+                session["role"] = "admin" if existing_user.get(
+                    "is_admin") else "user"
                 flash("Welcome, {}".format(
                     request.form.get("username")))
-
-                # Check if the user is an admin and redirect accordingly
-                if existing_user.get("is_admin"):
-                    return redirect(url_for("index"))
-
+                return redirect(url_for("index"))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")

@@ -18,11 +18,15 @@
 <div class="container">
     <div class="row">
         <div class="col-12 font-italic lead">
-            <p class="section-para">{{ post.paragraph_1 }}</p>
-            <p class="section-para">{{ post.paragraph_2 }}</p>
+            <p class="section-para">{{ post.paragraph_1 | safe }}</p>
+            <p class="section-para">{{ post.paragraph_2 | safe }}</p>
         </div>
         <div class="row text-center">
             <img src="{{ post.image2 }}" alt="" class="img-fluid journal-image">
+        </div>
+        <div class="col-12 font-italic lead">
+            <p class="section-para">{{ post.paragraph_3 | safe }}</p>
+            <p class="section-para">{{ post.paragraph_4 | safe }}</p>
         </div>
     </div>
     <div class="py-4">

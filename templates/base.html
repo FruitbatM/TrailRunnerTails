@@ -50,7 +50,7 @@
                                         <li>
                                             <a class="dropdown-item" href="{{ url_for('login_page') }}">LOGIN</a>
                                         </li>
-                                        {% if is_admin %}
+                                        {% if session.get("role") == "admin" %}
                                             <li>
                                                 <a class="dropdown-item" href="{{ url_for('add_journal') }}">ADD JOURNAL</a>
                                             </li>
