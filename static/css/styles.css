@@ -17,8 +17,8 @@ html, body {
 }
 
 #brand-logo {
-    width: 10rem;
-    height: 10rem;
+    width: 9rem;
+    height: 9rem;
 }
 
 .admin-user-mobile {
@@ -29,11 +29,15 @@ html, body {
     background-color: #b3e0e8 !important;
 }
 
+.active {
+    font-weight: bold;
+}
+
 /* Hero image */
 #home-header {
     background: url('/static/images/blog_header.jpg') no-repeat center;
     background-size: cover;
-    height: 40rem;
+    height: 36rem;
 }
 
 .main-heading {
@@ -246,7 +250,7 @@ a:link {
     }
 
     #home-header {
-        height: 33rem;
+        height: 35rem;
     }
 
     .main-heading {
