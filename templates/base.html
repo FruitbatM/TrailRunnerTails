@@ -33,13 +33,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item text-uppercase pe-5">
-                                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                                    <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
                                 </li>
                                 <li class="nav-item text-uppercase pe-5">
-                                    <a class="nav-link" href="{{ url_for('journal') }}">Journal</a>
+                                    <a class="nav-link {% if request.endpoint == 'journal' %}active{% endif %}" href="{{ url_for('journal') }}">Journal</a>
                                 </li>
                                 <li class="nav-item text-uppercase pe-5">
-                                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                                    <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a>
                                 </li>
                                 <li class="nav-item dropdown list-unstyled text-lg-right d-none d-lg-block ps-5">
                                     <a class="nav-link text-black" href="" id="navbarScrollingDropdown" 
