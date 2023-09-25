@@ -15,7 +15,7 @@ if os.path.exists("env.py"):
     import env
 
 # Create instance of flask and assign it to "app"
-app = Flask(__name__)
+application = app = Flask(__name__)
 app.config['SECRET_KEY'] = "this is my secret crf key"
 
 
